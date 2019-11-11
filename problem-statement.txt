@@ -1,0 +1,17 @@
+---------------
+Jeffrey Xiong
+Michael Papka
+Zulkifl Mohammed
+Adam Maser
+---------------
+CSC 422
+11.10.2019
+zombie group project
+problem statment
+---------------
+
+"A Zombie War program needs to be designed that has two types of 
+zombies and three types of people. These groups will take turns 
+attacking each other until one group is completely eradicated."
+
+---------------
