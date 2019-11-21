@@ -1,5 +1,6 @@
 package softwareengineweek5;
-//Coded by Michael Papka, Editied by Jeffrey Xiong
+//Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
+
 public class Zombie {
 
     private String type;
