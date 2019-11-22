@@ -10,306 +10,104 @@ class ZombieWar {
         newWar.runWar();
     }
 //----------------------------PROGRAM SETUP-------------------------------------
-    ArrayList<Human> HumanList = new ArrayList<>();
-    ArrayList<Zombie> ZombieList = new ArrayList<>();
+    //create superclass arrays
+    private ArrayList<Human> HumanList = new ArrayList<>();
+    private ArrayList<Zombie> ZombieList = new ArrayList<>();
 
     //Create separate lists for each type of human
     //This will be used to get the correct output (i.e. Soldier 0; Child 2)
-    ArrayList<Child> ChildList = new ArrayList<>();
-    ArrayList<Teacher> TeacherList = new ArrayList<>();
-    ArrayList<Soldier> SoldierList = new ArrayList<>();
-    ArrayList<CommonInfect> CommonInfectList = new ArrayList<>();
-    ArrayList<Tank> TankList = new ArrayList<>();
+    private ArrayList<Child> ChildList = new ArrayList<>();
+    private ArrayList<Teacher> TeacherList = new ArrayList<>();
+    private ArrayList<Soldier> SoldierList = new ArrayList<>();
+
+    //Create separate lists for each type of soldier
+    private ArrayList<CommonInfect> CommonInfectList = new ArrayList<>();
+    private ArrayList<Tank> TankList = new ArrayList<>();
 
 
-    public void generateObjects() {
+    private void generateObjects() {
         Random random = new Random();
 
+        //generate size of Human and Zombie Lists (1-20)
         int randomHumanNum = random.nextInt(20) + 1;
         int randomZombieNum = random.nextInt(20) + 1;
 
+        //generate types of humans and add to human list and respective subclass list
+        //also, the size of the subclass list is passed as a param to keep track of
+        //the order of subclass objects. Basically hard-coding the order of subclasses
+        //(since the arrays are never modified again)
         for (int i = 0; i < randomHumanNum; i++) {
             int type = random.nextInt(3) + 1;
 
             if (type == 1) {
-                Child myHuman = new Child("Child", 20, 2);
-                HumanList.add(myHuman);
+                Child newChild = new Child(ChildList.size());
+                HumanList.add(newChild);
+                ChildList.add(newChild);
             } else if (type == 2) {
-                Teacher myHuman = new Teacher("Teacher", 50, 5);
-                HumanList.add(myHuman);
+                Teacher newTeacher = new Teacher(TeacherList.size());
+                HumanList.add(newTeacher);
+                TeacherList.add(newTeacher);
             } else if (type == 3) {
-                Soldier myHuman = new Soldier("Soldier", 100, 10);
-                HumanList.add(myHuman);
+                Soldier newSoldier = new Soldier(SoldierList.size());
+                HumanList.add(newSoldier);
+                SoldierList.add(newSoldier);
             }
-
         }
 
+        //generate types of zombies and add to zombie list and respective subclass list
+        //size of subclasses passed as parameters (see above)
         for (int i = 0; i < randomZombieNum; i++) {
             int type = random.nextInt(2) + 1;
-
             if (type == 1) {
-                CommonInfect myZombie = new CommonInfect("CommonInfect", 30, 5);
-                ZombieList.add(myZombie);
+                CommonInfect newCommonInfect = new CommonInfect(CommonInfectList.size());
+                ZombieList.add(newCommonInfect);
+                CommonInfectList.add(newCommonInfect);
             } else if (type == 2) {
-                Tank myZombie = new Tank("Tank", 150, 20);
-                ZombieList.add(myZombie);
-            }
-
-        }
-
-        for (int i = 0; i < HumanList.size(); i++) {
-
-            if (HumanList.get(i).getType().equals("Child")) {
-                Child currentHuman = (Child) HumanList.get(i);
-                ChildList.add(currentHuman);
-            } else if (HumanList.get(i).getType().equals("Teacher")) {
-                Teacher currentHuman = (Teacher) HumanList.get(i);
-                TeacherList.add(currentHuman);
-            } else if (HumanList.get(i).getType().equals("Soldier")) {
-                Soldier currentHuman = (Soldier) HumanList.get(i);
-                SoldierList.add(currentHuman);
-            }
-        }
-        for (int i = 0; i < ZombieList.size(); i++) {
-
-            if (ZombieList.get(i).getType().equals("CommonInfect")) {
-                CommonInfect currentZombie = (CommonInfect) ZombieList.get(i);
-                CommonInfectList.add(currentZombie);
-            } else if (ZombieList.get(i).getType().equals("Tank")) {
-                Tank currentZombie = (Tank) ZombieList.get(i);
-                TankList.add(currentZombie);
+                Tank newTank = new Tank(TankList.size());
+                ZombieList.add(newTank);
+                TankList.add(newTank);
             }
         }
 
+        //output character descriptions
         System.out.println("We have " + randomHumanNum + " survivors trying to make it to safety (" + ChildList.size() + " children, " + TeacherList.size() + " teachers, " + SoldierList.size() + " soldiers)");
         System.out.println("But there are " + randomZombieNum + " zombies waiting for them (" + CommonInfectList.size() + " common infected, " + TankList.size() + " tanks)");
     }
 
-    public void runWar() {
-        boolean looper = true;
-        while (looper) {
-            if (HumanList.isEmpty() || ZombieList.isEmpty()) {
-                looper = false;
-            } else {
-                for (int i = 0; i < HumanList.size(); i++) {
+    //controls war logic flow
+    //calls to attack***() methods to execute attacks
+    private void runWar() {
+        while(!HumanList.isEmpty() && !ZombieList.isEmpty()) {
 
-                    if (HumanList.get(i).getType().equals("Child")) {
-
-                        Child currentHuman = (Child) HumanList.get(i);
-                        int currentHumanAttack = currentHuman.getAttack();
-                        for (int j = 0; j < ZombieList.size(); j++) {
-
-                            if (ZombieList.get(j).getType().equals("CommonInfect")) {
-
-                                CommonInfect currentZombie = (CommonInfect) ZombieList.get(j);
-                                int currentZombieHealth = currentZombie.getHealth();
-
-                                currentZombieHealth = currentZombieHealth - currentHumanAttack;
-                                currentZombie.setHealth(currentZombieHealth);
-
-                                if (currentZombieHealth <= 0) {
-                                    System.out.println("Child " + ChildList.indexOf(currentHuman) + " killed CommonInfect " + CommonInfectList.indexOf(currentZombie));
-                                    ZombieList.remove(j);
-                                    j = j - 1;
-                                }
-                            } else if (ZombieList.get(j).getType().equals("Tank")) {
-
-                                Tank currentZombie = (Tank) ZombieList.get(j);
-                                int currentZombieHealth = currentZombie.getHealth();
-
-                                currentZombieHealth = currentZombieHealth - currentHumanAttack;
-                                currentZombie.setHealth(currentZombieHealth);
-
-                                if (currentZombieHealth <= 0) {
-                                    System.out.println("Child " + ChildList.indexOf(currentHuman) + " killed Tank " + TankList.indexOf(currentZombie));
-                                    ZombieList.remove(j);
-                                    j = j - 1;
-
-                                }
-                            }
-
-                        }
-                    } else if (HumanList.get(i).getType().equals("Teacher")) {
-
-                        Teacher currentHuman = (Teacher) HumanList.get(i);
-                        int currentHumanAttack = currentHuman.getAttack();
-
-                        for (int j = 0; j < ZombieList.size(); j++) {
-
-                            if (ZombieList.get(j).getType().equals("CommonInfect")) {
-
-                                CommonInfect currentZombie = (CommonInfect) ZombieList.get(j);
-                                int currentZombieHealth = currentZombie.getHealth();
-
-                                currentZombieHealth = currentZombieHealth - currentHumanAttack;
-                                currentZombie.setHealth(currentZombieHealth);
-
-                                if (currentZombieHealth <= 0) {
-                                    System.out.println("Teacher " + TeacherList.indexOf(currentHuman) + " killed CommonInfect " + CommonInfectList.indexOf(currentZombie));
-                                    ZombieList.remove(j);
-                                    j = j - 1;
-                                }
-                            } else if (ZombieList.get(j).getType().equals("Tank")) {
-
-                                Tank currentZombie = (Tank) ZombieList.get(j);
-                                int currentZombieHealth = currentZombie.getHealth();
-
-                                currentZombieHealth = currentZombieHealth - currentHumanAttack;
-                                currentZombie.setHealth(currentZombieHealth);
-
-                                if (currentZombieHealth <= 0) {
-                                    System.out.println("Teacher " + TeacherList.indexOf(currentHuman) + " killed Tank " + TankList.indexOf(currentZombie));
-                                    ZombieList.remove(j);
-                                    j = j - 1;
-                                }
-                            }
-
-                        }
-                    } else if (HumanList.get(i).getType().equals("Soldier")) {
-
-                        Soldier currentHuman = (Soldier) HumanList.get(i);
-                        int currentHumanAttack = currentHuman.getAttack();
-
-                        for (int j = 0; j < ZombieList.size(); j++) {
-
-                            if (ZombieList.get(j).getType().equals("CommonInfect")) {
-
-                                CommonInfect currentZombie = (CommonInfect) ZombieList.get(j);
-                                int currentZombieHealth = currentZombie.getHealth();
-
-                                currentZombieHealth = currentZombieHealth - currentHumanAttack;
-                                currentZombie.setHealth(currentZombieHealth);
-
-                                if (currentZombieHealth <= 0) {
-                                    System.out.println("Soldier " + SoldierList.indexOf(currentHuman) + " killed CommonInfect " + CommonInfectList.indexOf(currentZombie));
-                                    ZombieList.remove(j);
-                                    j = j - 1;
-                                }
-                            } else if (ZombieList.get(j).getType().equals("Tank")) {
-
-                                Tank currentZombie = (Tank) ZombieList.get(j);
-                                int currentZombieHealth = currentZombie.getHealth();
-
-                                currentZombieHealth = currentZombieHealth - currentHumanAttack;
-                                currentZombie.setHealth(currentZombieHealth);
-
-                                if (currentZombieHealth <= 0) {
-                                    System.out.println("Soldier " + SoldierList.indexOf(currentHuman) + " killed Tank " + TankList.indexOf(currentZombie));
-                                    ZombieList.remove(j);
-                                    j = j - 1;
-                                }
-                            }
-
-                        }
-                    }
-
-                }
-
+            //humans attack
+            for (Human currentHuman : HumanList) {
+                //attack each zombie
                 for (int i = 0; i < ZombieList.size(); i++) {
-
-                    if (ZombieList.get(i).getType().equals("CommonInfect")) {
-
-                        CommonInfect currentZombie = (CommonInfect) ZombieList.get(i);
-                        int currentZombieAttack = currentZombie.getAttack();
-                        for (int j = 0; j < HumanList.size(); j++) {
-
-                            if (HumanList.get(j).getType().equals("Child")) {
-
-                                Child currentHuman = (Child) HumanList.get(j);
-                                int currentHumanHealth = currentHuman.getHealth();
-
-                                currentHumanHealth = currentHumanHealth - currentZombieAttack;
-                                currentHuman.setHealth(currentHumanHealth);
-
-                                if (currentHumanHealth <= 0) {
-                                    System.out.println("CommonInfect " + CommonInfectList.indexOf(currentZombie) + " killed Child " + ChildList.indexOf(currentHuman));
-                                    HumanList.remove(j);
-                                    j = j - 1;
-                                }
-                            } else if (HumanList.get(j).getType().equals("Teacher")) {
-
-                                Teacher currentHuman = (Teacher) HumanList.get(j);
-                                int currentHumanHealth = currentHuman.getHealth();
-
-                                currentHumanHealth = currentHumanHealth - currentZombieAttack;
-                                currentHuman.setHealth(currentHumanHealth);
-
-                                if (currentHumanHealth <= 0) {
-                                    System.out.println("CommonInfect " + CommonInfectList.indexOf(currentZombie) + " killed Teacher " + TeacherList.indexOf(currentHuman));
-                                    HumanList.remove(j);
-                                    j = j - 1;
-                                }
-                            } else if (HumanList.get(j).getType().equals("Soldier")) {
-
-                                Soldier currentHuman = (Soldier) HumanList.get(j);
-                                int currentHumanHealth = currentHuman.getHealth();
-
-                                currentHumanHealth = currentHumanHealth - currentZombieAttack;
-                                currentHuman.setHealth(currentHumanHealth);
-
-                                if (currentHumanHealth <= 0) {
-                                    System.out.println("CommonInfect " + CommonInfectList.indexOf(currentZombie) + " killed Soldier " + SoldierList.indexOf(currentHuman));
-                                    HumanList.remove(j);
-                                    j = j - 1;
-                                }
-                            }
-
-                        }
-                    } else if (ZombieList.get(i).getType().equals("Tank")) {
-
-                        Tank currentZombie = (Tank) ZombieList.get(i);
-                        int currentZombieAttack = currentZombie.getAttack();
-
-                        for (int j = 0; j < HumanList.size(); j++) {
-
-                            if (HumanList.get(j).getType().equals("Child")) {
-
-                                Child currentHuman = (Child) HumanList.get(j);
-                                int currentHumanHealth = currentHuman.getHealth();
-
-                                currentHumanHealth = currentHumanHealth - currentZombieAttack;
-                                currentHuman.setHealth(currentHumanHealth);
-
-                                if (currentHumanHealth <= 0) {
-                                    System.out.println("Tank " + TankList.indexOf(currentZombie) + " killed Child " + ChildList.indexOf(currentHuman));
-                                    HumanList.remove(j);
-                                    j = j - 1;
-                                }
-                            } else if (HumanList.get(j).getType().equals("Teacher")) {
-
-                                Teacher currentHuman = (Teacher) HumanList.get(j);
-                                int currentHumanHealth = currentHuman.getHealth();
-
-                                currentHumanHealth = currentHumanHealth - currentZombieAttack;
-                                currentHuman.setHealth(currentHumanHealth);
-
-                                if (currentHumanHealth <= 0) {
-                                    System.out.println("Tank " + TankList.indexOf(currentZombie) + " killed Teacher " + TeacherList.indexOf(currentHuman));
-                                    HumanList.remove(j);
-                                    j = j - 1;
-                                }
-                            } else if (HumanList.get(j).getType().equals("Soldier")) {
-
-                                Soldier currentHuman = (Soldier) HumanList.get(j);
-                                int currentHumanHealth = currentHuman.getHealth();
-
-                                currentHumanHealth = currentHumanHealth - currentZombieAttack;
-                                currentHuman.setHealth(currentHumanHealth);
-
-                                if (currentHumanHealth <= 0) {
-                                    System.out.println("Tank " + TankList.indexOf(currentZombie) + " killed Soldier " + SoldierList.indexOf(currentHuman));
-                                    HumanList.remove(j);
-                                    j = j - 1;
-                                }
-                            }
-
-                        }
+                    //get current zombie
+                    Zombie currentZombie = ZombieList.get(i);
+                    //attack and handle whether zombie is alive or dead
+                    if (!attackZombie(currentHuman, currentZombie)) {
+                        System.out.println(currentHuman.getType() + " killed " + currentZombie.getType());
+                        ZombieList.remove(currentZombie);
                     }
+                }
+            }
 
+            //zombies attack
+            for (Zombie currentZombie : ZombieList) {
+                //attack each human
+                for (int i = 0; i < HumanList.size(); i++) {
+                    //get current human
+                    Human currentHuman = HumanList.get(i);
+                    //attack and handle whether zombie is alive or dead
+                    if (!attackHuman(currentZombie, currentHuman)) {
+                        System.out.println(currentZombie.getType() + " killed " + currentHuman.getType());
+                        HumanList.remove(currentHuman);
+                    }
                 }
             }
         }
-
+        //output results of war
         if (HumanList.isEmpty()) {
             System.out.println("None of the survivors made it.");
         } else {
@@ -317,4 +115,19 @@ class ZombieWar {
         }
     }
 
+    //returns true if zombie is alive, false if dead
+    private boolean attackZombie(Human human, Zombie zombie) {
+        //do attack
+        zombie.setHealth(zombie.getHealth()-human.getAttack());
+        //get and test result of attack
+        return zombie.getHealth() > 0;
+    }
+
+    //returns true if human is alive, false if dead
+    private boolean attackHuman(Zombie zombie, Human human) {
+        //do attack
+        human.setHealth(human.getHealth()-zombie.getAttack());
+        //get and test result of attack
+        return human.getHealth() > 0;
+    }
 } //End of ZombieGame

@@ -1,12 +1,16 @@
 
 package softwareengineweek5;
-//Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
+//Coded by Michael Papka, Edited by Jeffrey Xiong, Zulkifl Mohammed, and Adam Maser
 public class Human {
 
-    private String type;
+    private final String type;
+    private int health;
+    private int attack;
 
-    public Human(String type) {
+    public Human(String type, int health, int attack) {
         this.type = type;
+        this.health = health;
+        this.attack = attack;
     }
 
     /**
@@ -16,11 +20,15 @@ public class Human {
         return type;
     }
 
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
+    public int getHealth() {
+        return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
 }
