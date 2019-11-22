@@ -3,7 +3,7 @@ package softwareengineweek5;
 import java.util.ArrayList;
 import java.util.Random;
 
-//Coded by Michael Papka, Editied by Jeffrey Xiong
+//Coded by Michael Papka, Edited by Jeffrey Xiong
 public class ZombieWar {
 
     public static void main(String[] args) {
