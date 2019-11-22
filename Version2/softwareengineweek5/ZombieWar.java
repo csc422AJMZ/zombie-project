@@ -3,16 +3,12 @@ package softwareengineweek5;
 import java.util.ArrayList;
 import java.util.Random;
 
-//Coded by Michael Papka, Editied by Jeffrey Xiong
-public class ZombieWar {
-
+class ZombieWar {
     public static void main(String[] args) {
-        new ZombieGame().start();
+        ZombieWar newWar = new ZombieWar();
+        newWar.generateObjects();
+        newWar.runWar();
     }
-}
-
-class ZombieGame {
-
 //----------------------------PROGRAM SETUP-------------------------------------
     ArrayList<Human> HumanList = new ArrayList<>();
     ArrayList<Zombie> ZombieList = new ArrayList<>();
@@ -25,11 +21,6 @@ class ZombieGame {
     ArrayList<CommonInfect> CommonInfectList = new ArrayList<>();
     ArrayList<Tank> TankList = new ArrayList<>();
 
-    public void start() {
-        generateObjects();
-        runWar();
-
-    }
 
     public void generateObjects() {
         Random random = new Random();
