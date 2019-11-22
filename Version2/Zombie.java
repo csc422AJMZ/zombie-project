@@ -1,5 +1,5 @@
 package softwareengineweek5;
-//Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
+//Coded by Michael Papka, Edited by Jeffrey Xiong, Zulkifl Mohammed
 
 public class Zombie {
 
