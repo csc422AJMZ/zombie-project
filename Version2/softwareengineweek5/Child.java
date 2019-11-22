@@ -1,15 +1,16 @@
 //package softwareengineweek5;
 //Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
 
-class Tank extends Zombie {
+package softwareengineweek5;
 
+class Child extends Human {
     private int health;
     private int attack;
 
-    public Tank(String type, int health, int attack) {
+    public Child(String type, int health, int attack) {
         super(type);
-        this.health = 150;
-        this.attack = 20;
+        this.health = 20;
+        this.attack = 2;
     }
 
     /**
@@ -39,5 +40,4 @@ class Tank extends Zombie {
     public void setAttack(int attack) {
         this.attack = attack;
     }
-
 }

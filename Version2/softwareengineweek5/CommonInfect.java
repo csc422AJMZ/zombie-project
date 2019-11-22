@@ -1,14 +1,17 @@
 //package softwareengineweek5;
 //Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
 
-class Child extends Human{
+package softwareengineweek5;
+
+class CommonInfect extends Zombie {
+
     private int health;
     private int attack;
 
-    public Child(String type, int health, int attack) {
+    public CommonInfect(String type, int health, int attack) {
         super(type);
-        this.health = 20;
-        this.attack = 2;
+        this.health = 30;
+        this.attack = 5;
     }
 
     /**
@@ -38,4 +41,5 @@ class Child extends Human{
     public void setAttack(int attack) {
         this.attack = attack;
     }
+
 }

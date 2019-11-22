@@ -1,17 +1,15 @@
-//package softwareengineweek5;
-
+package softwareengineweek5;//package softwareengineweek5;
 //Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
 
-
-class Teacher extends Human {
+class Tank extends Zombie {
 
     private int health;
     private int attack;
 
-    public Teacher(String type, int health, int attack) {
+    public Tank(String type, int health, int attack) {
         super(type);
-        this.health = 50;
-        this.attack = 5;
+        this.health = 150;
+        this.attack = 20;
     }
 
     /**

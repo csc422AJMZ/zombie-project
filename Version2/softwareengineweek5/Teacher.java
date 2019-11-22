@@ -1,16 +1,17 @@
-//package softwareengineweek5;
+package softwareengineweek5;//package softwareengineweek5;
+
 //Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
 
 
-class Soldier extends Human {
+class Teacher extends Human {
 
     private int health;
     private int attack;
 
-    public Soldier(String type, int health, int attack) {
+    public Teacher(String type, int health, int attack) {
         super(type);
-        this.health = 100;
-        this.attack = 10;
+        this.health = 50;
+        this.attack = 5;
     }
 
     /**

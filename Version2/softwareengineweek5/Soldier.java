@@ -1,16 +1,16 @@
-//package softwareengineweek5;
+package softwareengineweek5;//package softwareengineweek5;
 //Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
 
 
-class CommonInfect extends Zombie {
+class Soldier extends Human {
 
     private int health;
     private int attack;
 
-    public CommonInfect(String type, int health, int attack) {
+    public Soldier(String type, int health, int attack) {
         super(type);
-        this.health = 30;
-        this.attack = 5;
+        this.health = 100;
+        this.attack = 10;
     }
 
     /**
