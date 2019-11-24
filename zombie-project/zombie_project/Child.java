@@ -1,7 +1,7 @@
-//package softwareengineweek5;
+
 //Coded by Michael Papka, Edited by Jeffrey Xiong, Zulkifl Mohammed, and Adam Maser
 
-package softwareengineweek5;
+package zombie_project;
 
 class Child extends Human {
 

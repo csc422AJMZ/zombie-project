@@ -1,7 +1,7 @@
-//package softwareengineweek5;
+
 //Coded by Michael Papka, Editied by Jeffrey Xiong, Zulkifl Mohammed
 
-package softwareengineweek5;
+package zombie_project;
 
 class CommonInfect extends Zombie {
 
