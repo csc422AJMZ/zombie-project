@@ -34,10 +34,10 @@ class ZombieGame {
                 Child myHuman = new Child("Child", 20, 2);
                 HumanList.add(myHuman);
             } else if (type == 2) {
-                softwareengineweek5.Teacher myHuman = new softwareengineweek5.Teacher("softwareengineweek5.Teacher", 50, 5);
+                zombie_project.Teacher myHuman = new zombie_project.Teacher("zombie_project.Teacher", 50, 5);
                 HumanList.add(myHuman);
             } else if (type == 3) {
-                softwareengineweek5.Soldier myHuman = new softwareengineweek5.Soldier("softwareengineweek5.Soldier", 100, 10);
+                zombie_project.Soldier myHuman = new zombie_project.Soldier("zombie_project.Soldier", 100, 10);
                 HumanList.add(myHuman);
             }
 
@@ -50,43 +50,43 @@ class ZombieGame {
                 CommonInfect myZombie = new CommonInfect("CommonInfect", 30, 5);
                 ZombieList.add(myZombie);
             } else if (type == 2) {
-                softwareengineweek5.Tank myZombie = new softwareengineweek5.Tank("softwareengineweek5.Tank", 150, 20);
+                zombie_project.Tank myZombie = new zombie_project.Tank("zombie_project.Tank", 150, 20);
                 ZombieList.add(myZombie);
             }
 
         }
 
         ArrayList<Child> ChildList = new ArrayList<>();
-        ArrayList<softwareengineweek5.Teacher> TeacherList = new ArrayList<>();
-        ArrayList<softwareengineweek5.Soldier> SoldierList = new ArrayList<>();
+        ArrayList<zombie_project.Teacher> TeacherList = new ArrayList<>();
+        ArrayList<zombie_project.Soldier> SoldierList = new ArrayList<>();
         ArrayList<CommonInfect> CommonInfectList = new ArrayList<>();
-        ArrayList<softwareengineweek5.Tank> TankList = new ArrayList<>();
+        ArrayList<zombie_project.Tank> TankList = new ArrayList<>();
 
         //Create separate lists for each type of human
-        //This will be used to get the correct output (i.e. softwareengineweek5.Soldier 0; Child 2)
+        //This will be used to get the correct output (i.e. zombie_project.Soldier 0; Child 2)
         for (int i = 0; i < HumanList.size(); i++) {
 
             if (HumanList.get(i).getType().equals("Child")) {
                 Child currentHuman = (Child) HumanList.get(i);
                 ChildList.add(currentHuman);
-            } else if (HumanList.get(i).getType().equals("softwareengineweek5.Teacher")) {
-                softwareengineweek5.Teacher currentHuman = (softwareengineweek5.Teacher) HumanList.get(i);
+            } else if (HumanList.get(i).getType().equals("zombie_project.Teacher")) {
+                zombie_project.Teacher currentHuman = (zombie_project.Teacher) HumanList.get(i);
                 TeacherList.add(currentHuman);
-            } else if (HumanList.get(i).getType().equals("softwareengineweek5.Soldier")) {
-                softwareengineweek5.Soldier currentHuman = (softwareengineweek5.Soldier) HumanList.get(i);
+            } else if (HumanList.get(i).getType().equals("zombie_project.Soldier")) {
+                zombie_project.Soldier currentHuman = (zombie_project.Soldier) HumanList.get(i);
                 SoldierList.add(currentHuman);
             }
         }
 
         //Create separate lists for each type of zombie
-        //This will be used to get the correct output (i.e. CommonInfect 0; softwareengineweek5.Tank 2)
+        //This will be used to get the correct output (i.e. CommonInfect 0; zombie_project.Tank 2)
         for (int i = 0; i < ZombieList.size(); i++) {
 
             if (ZombieList.get(i).getType().equals("CommonInfect")) {
                 CommonInfect currentZombie = (CommonInfect) ZombieList.get(i);
                 CommonInfectList.add(currentZombie);
-            } else if (ZombieList.get(i).getType().equals("softwareengineweek5.Tank")) {
-                softwareengineweek5.Tank currentZombie = (softwareengineweek5.Tank) ZombieList.get(i);
+            } else if (ZombieList.get(i).getType().equals("zombie_project.Tank")) {
+                zombie_project.Tank currentZombie = (zombie_project.Tank) ZombieList.get(i);
                 TankList.add(currentZombie);
             }
         }
@@ -122,9 +122,9 @@ class ZombieGame {
                                     ZombieList.remove(j);
                                     j = j - 1;
                                 }
-                            } else if (ZombieList.get(j).getType().equals("softwareengineweek5.Tank")) {
+                            } else if (ZombieList.get(j).getType().equals("zombie_project.Tank")) {
 
-                                softwareengineweek5.Tank currentZombie = (softwareengineweek5.Tank) ZombieList.get(j);
+                                zombie_project.Tank currentZombie = (zombie_project.Tank) ZombieList.get(j);
                                 int currentZombieHealth = currentZombie.getHealth();
 
                                 currentZombieHealth = currentZombieHealth - currentHumanAttack;
@@ -132,7 +132,7 @@ class ZombieGame {
 
                                 
                                 if (currentZombieHealth <= 0) {
-                                    System.out.println("Child " + ChildList.indexOf(currentHuman) + " killed softwareengineweek5.Tank " + TankList.indexOf(currentZombie));
+                                    System.out.println("Child " + ChildList.indexOf(currentHuman) + " killed zombie_project.Tank " + TankList.indexOf(currentZombie));
                                     ZombieList.remove(j);
                                     j = j - 1;
 
@@ -140,9 +140,9 @@ class ZombieGame {
                             }
 
                         }
-                    } else if (HumanList.get(i).getType().equals("softwareengineweek5.Teacher")) {
+                    } else if (HumanList.get(i).getType().equals("zombie_project.Teacher")) {
 
-                        softwareengineweek5.Teacher currentHuman = (softwareengineweek5.Teacher) HumanList.get(i);
+                        zombie_project.Teacher currentHuman = (zombie_project.Teacher) HumanList.get(i);
                         int currentHumanAttack = currentHuman.getAttack();
 
                         for (int j = 0; j < ZombieList.size(); j++) {
@@ -157,13 +157,13 @@ class ZombieGame {
 
                                 
                                 if (currentZombieHealth <= 0) {
-                                    System.out.println("softwareengineweek5.Teacher " + TeacherList.indexOf(currentHuman) + " killed CommonInfect " + CommonInfectList.indexOf(currentZombie));
+                                    System.out.println("zombie_project.Teacher " + TeacherList.indexOf(currentHuman) + " killed CommonInfect " + CommonInfectList.indexOf(currentZombie));
                                     ZombieList.remove(j);
                                     j = j - 1;
                                 }
-                            } else if (ZombieList.get(j).getType().equals("softwareengineweek5.Tank")) {
+                            } else if (ZombieList.get(j).getType().equals("zombie_project.Tank")) {
 
-                                softwareengineweek5.Tank currentZombie = (softwareengineweek5.Tank) ZombieList.get(j);
+                                zombie_project.Tank currentZombie = (zombie_project.Tank) ZombieList.get(j);
                                 int currentZombieHealth = currentZombie.getHealth();
 
                                 currentZombieHealth = currentZombieHealth - currentHumanAttack;
@@ -171,16 +171,16 @@ class ZombieGame {
 
                                 
                                 if (currentZombieHealth <= 0) {
-                                    System.out.println("softwareengineweek5.Teacher " + TeacherList.indexOf(currentHuman) + " killed softwareengineweek5.Tank " + TankList.indexOf(currentZombie));
+                                    System.out.println("zombie_project.Teacher " + TeacherList.indexOf(currentHuman) + " killed zombie_project.Tank " + TankList.indexOf(currentZombie));
                                     ZombieList.remove(j);
                                     j = j - 1;
                                 }
                             }
 
                         }
-                    } else if (HumanList.get(i).getType().equals("softwareengineweek5.Soldier")) {
+                    } else if (HumanList.get(i).getType().equals("zombie_project.Soldier")) {
 
-                        softwareengineweek5.Soldier currentHuman = (softwareengineweek5.Soldier) HumanList.get(i);
+                        zombie_project.Soldier currentHuman = (zombie_project.Soldier) HumanList.get(i);
                         int currentHumanAttack = currentHuman.getAttack();
 
                         for (int j = 0; j < ZombieList.size(); j++) {
@@ -195,13 +195,13 @@ class ZombieGame {
 
                                 
                                 if (currentZombieHealth <= 0) {
-                                    System.out.println("softwareengineweek5.Soldier " + SoldierList.indexOf(currentHuman) + " killed CommonInfect " + CommonInfectList.indexOf(currentZombie));
+                                    System.out.println("zombie_project.Soldier " + SoldierList.indexOf(currentHuman) + " killed CommonInfect " + CommonInfectList.indexOf(currentZombie));
                                     ZombieList.remove(j);
                                     j = j - 1;
                                 }
-                            } else if (ZombieList.get(j).getType().equals("softwareengineweek5.Tank")) {
+                            } else if (ZombieList.get(j).getType().equals("zombie_project.Tank")) {
 
-                                softwareengineweek5.Tank currentZombie = (softwareengineweek5.Tank) ZombieList.get(j);
+                                zombie_project.Tank currentZombie = (zombie_project.Tank) ZombieList.get(j);
                                 int currentZombieHealth = currentZombie.getHealth();
 
                                 currentZombieHealth = currentZombieHealth - currentHumanAttack;
@@ -209,7 +209,7 @@ class ZombieGame {
 
                                 
                                 if (currentZombieHealth <= 0) {
-                                    System.out.println("softwareengineweek5.Soldier " + SoldierList.indexOf(currentHuman) + " killed softwareengineweek5.Tank " + TankList.indexOf(currentZombie));
+                                    System.out.println("zombie_project.Soldier " + SoldierList.indexOf(currentHuman) + " killed zombie_project.Tank " + TankList.indexOf(currentZombie));
                                     ZombieList.remove(j);
                                     j = j - 1;
                                 }
@@ -242,9 +242,9 @@ class ZombieGame {
                                     HumanList.remove(j);
                                     j = j - 1;
                                 }
-                            } else if (HumanList.get(j).getType().equals("softwareengineweek5.Teacher")) {
+                            } else if (HumanList.get(j).getType().equals("zombie_project.Teacher")) {
 
-                                softwareengineweek5.Teacher currentHuman = (softwareengineweek5.Teacher) HumanList.get(j);
+                                zombie_project.Teacher currentHuman = (zombie_project.Teacher) HumanList.get(j);
                                 int currentHumanHealth = currentHuman.getHealth();
 
                                 currentHumanHealth = currentHumanHealth - currentZombieAttack;
@@ -252,13 +252,13 @@ class ZombieGame {
 
                                 
                                 if (currentHumanHealth <= 0) {
-                                    System.out.println("CommonInfect " + CommonInfectList.indexOf(currentZombie) + " killed softwareengineweek5.Teacher " + TeacherList.indexOf(currentHuman));
+                                    System.out.println("CommonInfect " + CommonInfectList.indexOf(currentZombie) + " killed zombie_project.Teacher " + TeacherList.indexOf(currentHuman));
                                     HumanList.remove(j);
                                     j = j - 1;
                                 }
-                            } else if (HumanList.get(j).getType().equals("softwareengineweek5.Soldier")) {
+                            } else if (HumanList.get(j).getType().equals("zombie_project.Soldier")) {
 
-                                softwareengineweek5.Soldier currentHuman = (softwareengineweek5.Soldier) HumanList.get(j);
+                                zombie_project.Soldier currentHuman = (zombie_project.Soldier) HumanList.get(j);
                                 int currentHumanHealth = currentHuman.getHealth();
 
                                 currentHumanHealth = currentHumanHealth - currentZombieAttack;
@@ -266,16 +266,16 @@ class ZombieGame {
 
                                 
                                 if (currentHumanHealth <= 0) {
-                                    System.out.println("CommonInfect " + CommonInfectList.indexOf(currentZombie) + " killed softwareengineweek5.Soldier " + SoldierList.indexOf(currentHuman));
+                                    System.out.println("CommonInfect " + CommonInfectList.indexOf(currentZombie) + " killed zombie_project.Soldier " + SoldierList.indexOf(currentHuman));
                                     HumanList.remove(j);
                                     j = j - 1;
                                 }
                             }
 
                         }
-                    } else if (ZombieList.get(i).getType().equals("softwareengineweek5.Tank")) {
+                    } else if (ZombieList.get(i).getType().equals("zombie_project.Tank")) {
 
-                        softwareengineweek5.Tank currentZombie = (softwareengineweek5.Tank) ZombieList.get(i);
+                        zombie_project.Tank currentZombie = (zombie_project.Tank) ZombieList.get(i);
                         int currentZombieAttack = currentZombie.getAttack();
 
                         for (int j = 0; j < HumanList.size(); j++) {
@@ -290,13 +290,13 @@ class ZombieGame {
 
                                 
                                 if (currentHumanHealth <= 0) {
-                                    System.out.println("softwareengineweek5.Tank " + TankList.indexOf(currentZombie) + " killed Child " + ChildList.indexOf(currentHuman));
+                                    System.out.println("zombie_project.Tank " + TankList.indexOf(currentZombie) + " killed Child " + ChildList.indexOf(currentHuman));
                                     HumanList.remove(j);
                                     j = j - 1;
                                 }
-                            } else if (HumanList.get(j).getType().equals("softwareengineweek5.Teacher")) {
+                            } else if (HumanList.get(j).getType().equals("zombie_project.Teacher")) {
 
-                                softwareengineweek5.Teacher currentHuman = (softwareengineweek5.Teacher) HumanList.get(j);
+                                zombie_project.Teacher currentHuman = (zombie_project.Teacher) HumanList.get(j);
                                 int currentHumanHealth = currentHuman.getHealth();
 
                                 currentHumanHealth = currentHumanHealth - currentZombieAttack;
@@ -304,13 +304,13 @@ class ZombieGame {
 
                                 
                                 if (currentHumanHealth <= 0) {
-                                    System.out.println("softwareengineweek5.Tank " + TankList.indexOf(currentZombie) + " killed softwareengineweek5.Teacher " + TeacherList.indexOf(currentHuman));
+                                    System.out.println("zombie_project.Tank " + TankList.indexOf(currentZombie) + " killed zombie_project.Teacher " + TeacherList.indexOf(currentHuman));
                                     HumanList.remove(j);
                                     j = j - 1;
                                 }
-                            } else if (HumanList.get(j).getType().equals("softwareengineweek5.Soldier")) {
+                            } else if (HumanList.get(j).getType().equals("zombie_project.Soldier")) {
 
-                                softwareengineweek5.Soldier currentHuman = (softwareengineweek5.Soldier) HumanList.get(j);
+                                zombie_project.Soldier currentHuman = (zombie_project.Soldier) HumanList.get(j);
                                 int currentHumanHealth = currentHuman.getHealth();
 
                                 currentHumanHealth = currentHumanHealth - currentZombieAttack;
@@ -318,7 +318,7 @@ class ZombieGame {
 
                                 
                                 if (currentHumanHealth <= 0) {
-                                    System.out.println("softwareengineweek5.Tank " + TankList.indexOf(currentZombie) + " killed softwareengineweek5.Soldier " + SoldierList.indexOf(currentHuman));
+                                    System.out.println("zombie_project.Tank " + TankList.indexOf(currentZombie) + " killed zombie_project.Soldier " + SoldierList.indexOf(currentHuman));
                                     HumanList.remove(j);
                                     j = j - 1;
                                 }
@@ -406,12 +406,12 @@ class CommonInfect extends Zombie {
 
 }
 
-class softwareengineweek5.Tank extends Zombie {
+class zombie_project.Tank extends Zombie {
 
     private int health;
     private int attack;
 
-    public softwareengineweek5.Tank(String type, int health, int attack) {
+    public zombie_project.Tank(String type, int health, int attack) {
         super(type);
         this.health = 150;
         this.attack = 20;
@@ -512,12 +512,12 @@ class Child extends Human {
 
 }
 
-class softwareengineweek5.Teacher extends Human {
+class zombie_project.Teacher extends Human {
 
     private int health;
     private int attack;
 
-    public softwareengineweek5.Teacher(String type, int health, int attack) {
+    public zombie_project.Teacher(String type, int health, int attack) {
         super(type);
         this.health = 50;
         this.attack = 5;
@@ -553,12 +553,12 @@ class softwareengineweek5.Teacher extends Human {
 
 }
 
-class softwareengineweek5.Soldier extends Human {
+class zombie_project.Soldier extends Human {
 
     private int health;
     private int attack;
 
-    public softwareengineweek5.Soldier(String type, int health, int attack) {
+    public zombie_project.Soldier(String type, int health, int attack) {
         super(type);
         this.health = 100;
         this.attack = 10;
