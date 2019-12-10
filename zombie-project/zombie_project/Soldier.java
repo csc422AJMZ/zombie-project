@@ -4,7 +4,7 @@ package zombie_project;
 
 class Soldier extends Human {
 
-    public Soldier(int rank) {
-        super(("Soldier " + rank), 100, 10);
+    public Soldier(int rank, Weapon weapon) {
+        super(("Soldier " + rank), 100, 10, weapon);
     }
 }

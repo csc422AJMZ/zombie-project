@@ -5,7 +5,7 @@ package zombie_project;
 
 class Teacher extends Human {
 
-    public Teacher(int rank) {
-        super(("Teacher " + rank), 50, 5);
+    public Teacher(int rank, Weapon weapon) {
+        super(("Teacher " + rank), 50, 5, weapon);
     }
 }

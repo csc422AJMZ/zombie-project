@@ -40,15 +40,15 @@ class ZombieWar {
             int type = random.nextInt(3) + 1;
 
             if (type == 1) {
-                Child newChild = new Child(ChildList.size());
+                Child newChild = new Child(ChildList.size(), new Shotgun());
                 HumanList.add(newChild);
                 ChildList.add(newChild);
             } else if (type == 2) {
-                Teacher newTeacher = new Teacher(TeacherList.size());
+                Teacher newTeacher = new Teacher(TeacherList.size(), new Shotgun());
                 HumanList.add(newTeacher);
                 TeacherList.add(newTeacher);
             } else if (type == 3) {
-                Soldier newSoldier = new Soldier(SoldierList.size());
+                Soldier newSoldier = new Soldier(SoldierList.size(), new Shotgun());
                 HumanList.add(newSoldier);
                 SoldierList.add(newSoldier);
             }
@@ -87,7 +87,7 @@ class ZombieWar {
                     Zombie currentZombie = ZombieList.get(i);
                     //attack and handle whether zombie is alive or dead
                     if (!attackZombie(currentHuman, currentZombie)) {
-                        System.out.println(currentHuman.getType() + " killed " + currentZombie.getType());
+                        System.out.println(currentHuman.getType() + " killed " + currentZombie.getType() + " with " + currentHuman.getWeapon().getName());
                         ZombieList.remove(currentZombie);
                     }
                 }
@@ -118,7 +118,7 @@ class ZombieWar {
     //returns true if zombie is alive, false if dead
     private boolean attackZombie(Human human, Zombie zombie) {
         //do attack
-        zombie.setHealth(zombie.getHealth()-human.getAttack());
+        human.getWeapon().attack(zombie);
         //get and test result of attack
         return zombie.getHealth() > 0;
     }

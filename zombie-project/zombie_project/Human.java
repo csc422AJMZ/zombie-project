@@ -6,11 +6,13 @@ public class Human {
     private final String type;
     private int health;
     private int attack;
+    private Weapon weapon;
 
-    public Human(String type, int health, int attack) {
+    public Human(String type, int health, int attack, Weapon weapon) {
         this.type = type;
         this.health = health;
         this.attack = attack;
+        this.weapon = weapon;
     }
 
     /**
@@ -31,4 +33,6 @@ public class Human {
     public int getAttack() {
         return attack;
     }
+
+    public Weapon getWeapon() {return weapon;}
 }
