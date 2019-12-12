@@ -40,15 +40,15 @@ class ZombieWar {
             int type = random.nextInt(3) + 1;
 
             if (type == 1) {
-                Child newChild = new Child(ChildList.size(), new Shotgun());
+                Child newChild = new Child(ChildList.size(), generateWeapon());
                 HumanList.add(newChild);
                 ChildList.add(newChild);
             } else if (type == 2) {
-                Teacher newTeacher = new Teacher(TeacherList.size(), new Shotgun());
+                Teacher newTeacher = new Teacher(TeacherList.size(), generateWeapon());
                 HumanList.add(newTeacher);
                 TeacherList.add(newTeacher);
             } else if (type == 3) {
-                Soldier newSoldier = new Soldier(SoldierList.size(), new Shotgun());
+                Soldier newSoldier = new Soldier(SoldierList.size(), generateWeapon());
                 HumanList.add(newSoldier);
                 SoldierList.add(newSoldier);
             }
@@ -59,11 +59,11 @@ class ZombieWar {
         for (int i = 0; i < randomZombieNum; i++) {
             int type = random.nextInt(2) + 1;
             if (type == 1) {
-                CommonInfect newCommonInfect = new CommonInfect(CommonInfectList.size());
+                CommonInfect newCommonInfect = new CommonInfect(CommonInfectList.size(), generateWeapon());
                 ZombieList.add(newCommonInfect);
                 CommonInfectList.add(newCommonInfect);
             } else if (type == 2) {
-                Tank newTank = new Tank(TankList.size());
+                Tank newTank = new Tank(TankList.size(), generateWeapon());
                 ZombieList.add(newTank);
                 TankList.add(newTank);
             }
