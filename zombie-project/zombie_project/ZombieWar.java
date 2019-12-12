@@ -89,7 +89,7 @@ class ZombieWar {
                     if (!attackZombie(currentHuman, currentZombie)) {
 
                         System.out.println("-----------------------");
-                        System.out.println(currentHuman.getType() + " killed " + currentZombie.getType() + " with " + currentHuman.getWeapon().getName());
+                        System.out.println(currentHuman.getType() + " killed " + currentZombie.getType() + " with a " + currentHuman.getWeapon().getName());
                         System.out.println("-----------------------");
                         ZombieList.remove(currentZombie);
                     }
@@ -124,21 +124,22 @@ class ZombieWar {
 
     private Weapon generateWeapon() {
         Random randNum = new Random();
-        int weaponType = randNum.nextInt(8);
+        int weaponType = randNum.nextInt(7);
+        //DEBUG -- System.out.println("Index to generate weapon: " + weaponType);
         switch (weaponType) {
             case 0:
                 return new Shotgun();
             case 1:
                 return new SubMachineGun();
-            case 3:
+            case 2:
                 return new Axe();
-            case 4:
+            case 3:
                 return new Pistol();
-            case 5:
+            case 4:
                 return new Crowbar();
-            case 6:
+            case 5:
                 return new FryingPan();
-            case 7:
+            case 6:
                 return new AssaultRifle();
         }
         return null;
@@ -148,9 +149,13 @@ class ZombieWar {
     private boolean attackZombie(Human human, Zombie zombie) {
         //do attack
         Weapon currentWeapon = human.getWeapon();
-        System.out.println("Zombie's health before attack: " + zombie.getHealth());
-        currentWeapon.attack(zombie);
-        System.out.println("Zombie's health after attack: " + zombie.getHealth());
+        //System.out.println("Zombie's health before attack: " + zombie.getHealth());
+        try {
+            currentWeapon.attack(zombie);
+        } catch (NullPointerException ex) {
+            System.out.println(currentWeapon.getName());
+        }
+        //System.out.println("Zombie's health after attack: " + zombie.getHealth());
         //get and test result of attack
         return zombie.getHealth() > 0;
     }
