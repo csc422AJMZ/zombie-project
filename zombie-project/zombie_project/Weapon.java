@@ -13,15 +13,17 @@ public class Weapon {
     }
 
     //attack method
-    public void attack(Zombie zombie) {
+    public boolean attack(Zombie zombie) {
         Random getNum = new Random();
         int randNum = getNum.nextInt(11);
         //DEBUG -- System.out.println("Number being used: " + randNum);
         if (randNum % accuracy == 0) {
+            return false;
             //DEBUG -- System.out.println("The " + this.getName()+ " missed!");
         } else {
             //DEBUG -- System.out.println("Weapon being used: " + this.getName());
             zombie.setHealth(zombie.getHealth() - this.damage);
+            return true;
         }
     }
 

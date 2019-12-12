@@ -149,13 +149,11 @@ class ZombieWar {
     private boolean attackZombie(Human human, Zombie zombie) {
         //do attack
         Weapon currentWeapon = human.getWeapon();
-        //System.out.println("Zombie's health before attack: " + zombie.getHealth());
-        try {
-            currentWeapon.attack(zombie);
-        } catch (NullPointerException ex) {
-            System.out.println(currentWeapon.getName());
+        //DEBUG -- System.out.println("Zombie's health before attack: " + zombie.getHealth());
+        if (currentWeapon.attack(zombie)) {
+            System.out.println("Oops! " + human.getType() + " missed with a " + currentWeapon.getName());
         }
-        //System.out.println("Zombie's health after attack: " + zombie.getHealth());
+        //DEBUG -- System.out.println("Zombie's health after attack: " + zombie.getHealth());
         //get and test result of attack
         return zombie.getHealth() > 0;
     }
