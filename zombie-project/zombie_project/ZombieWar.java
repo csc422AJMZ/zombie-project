@@ -59,11 +59,11 @@ class ZombieWar {
         for (int i = 0; i < randomZombieNum; i++) {
             int type = random.nextInt(2) + 1;
             if (type == 1) {
-                CommonInfect newCommonInfect = new CommonInfect(CommonInfectList.size(), generateWeapon());
+                CommonInfect newCommonInfect = new CommonInfect(CommonInfectList.size());
                 ZombieList.add(newCommonInfect);
                 CommonInfectList.add(newCommonInfect);
             } else if (type == 2) {
-                Tank newTank = new Tank(TankList.size(), generateWeapon());
+                Tank newTank = new Tank(TankList.size());
                 ZombieList.add(newTank);
                 TankList.add(newTank);
             }
