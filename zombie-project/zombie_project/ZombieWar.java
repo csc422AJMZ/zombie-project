@@ -150,7 +150,7 @@ class ZombieWar {
         //do attack
         Weapon currentWeapon = human.getWeapon();
         //DEBUG -- System.out.println("Zombie's health before attack: " + zombie.getHealth());
-        if (currentWeapon.attack(zombie)) {
+        if (!currentWeapon.attack(zombie)) {
             System.out.println("Oops! " + human.getType() + " missed with a " + currentWeapon.getName());
         }
         //DEBUG -- System.out.println("Zombie's health after attack: " + zombie.getHealth());

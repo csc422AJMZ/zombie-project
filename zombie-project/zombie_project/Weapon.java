@@ -16,10 +16,10 @@ public class Weapon {
     public boolean attack(Zombie zombie) {
         Random getNum = new Random();
         int randNum = getNum.nextInt(11);
-        //DEBUG -- System.out.println("Number being used: " + randNum);
+        // DEBUG -- System.out.println("Number being used: " + randNum);
         if (randNum % accuracy == 0) {
+            //DEBUG -- System.out.println("result of mod: " + randNum % accuracy);
             return false;
-            //DEBUG -- System.out.println("The " + this.getName()+ " missed!");
         } else {
             //DEBUG -- System.out.println("Weapon being used: " + this.getName());
             zombie.setHealth(zombie.getHealth() - this.damage);
