@@ -30,9 +30,5 @@ public class Human {
         this.health = health;
     }
 
-    public int getAttack() {
-        return attack;
-    }
-
     public Weapon getWeapon() {return weapon;}
 }

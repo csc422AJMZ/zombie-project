@@ -119,14 +119,12 @@ class ZombieWar {
 
     private Weapon generateWeapon() {
         Random randNum = new Random();
-        int weaponType = randNum.nextInt(5);
+        int weaponType = randNum.nextInt(8);
         switch (weaponType) {
             case 0:
                 return new Shotgun();
             case 1:
                 return new SubMachineGun();
-            case 2:
-                return new AssaultRifle();
             case 3:
                 return new Axe();
             case 4:
@@ -135,7 +133,10 @@ class ZombieWar {
                 return new Crowbar();
             case 6:
                 return new FryingPan();
+            case 7:
+                return new AssaultRifle();
         }
+        return null;
     }
 
     //returns true if zombie is alive, false if dead
