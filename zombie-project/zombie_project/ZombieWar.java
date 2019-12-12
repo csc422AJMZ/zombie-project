@@ -128,9 +128,13 @@ class ZombieWar {
             case 2:
                 return new AssaultRifle();
             case 3:
-                return new Rifle();
+                return new Axe();
             case 4:
-                return new Thundergun();
+                return new Pistol();
+            case 5:
+                return new Crowbar();
+            case 6:
+                return new FryingPan();
         }
     }
 
