@@ -12,25 +12,16 @@ public class Weapon {
         this.name = name;
     }
 
-    public void attack(Human human) {
-        Random getNum = new Random();
-        int randNum = getNum.nextInt(11);
-        if (randNum % accuracy == 0) {
-            System.out.println("The " + this.name + " missed!");
-        } else {
-            human.setHealth(human.getHealth() - this.damage);
-        }
-    }
-
     //attack method
     public void attack(Zombie zombie) {
         Random getNum = new Random();
         int randNum = getNum.nextInt(11);
         //DEBUG
-        System.out.println(randNum);
+        System.out.println("Number being used: " + randNum);
         if (randNum % accuracy == 0) {
-            System.out.println("The " + this.name + " missed!");
+            System.out.println("The " + this.getName()+ " missed!");
         } else {
+            System.out.println("Weapon being used: " + this.getName());
             zombie.setHealth(zombie.getHealth() - this.damage);
         }
     }

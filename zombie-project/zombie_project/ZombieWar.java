@@ -87,7 +87,10 @@ class ZombieWar {
                     Zombie currentZombie = ZombieList.get(i);
                     //attack and handle whether zombie is alive or dead
                     if (!attackZombie(currentHuman, currentZombie)) {
+
+                        System.out.println("-----------------------");
                         System.out.println(currentHuman.getType() + " killed " + currentZombie.getType() + " with " + currentHuman.getWeapon().getName());
+                        System.out.println("-----------------------");
                         ZombieList.remove(currentZombie);
                     }
                 }
@@ -101,7 +104,9 @@ class ZombieWar {
                     Human currentHuman = HumanList.get(i);
                     //attack and handle whether zombie is alive or dead
                     if (!attackHuman(currentZombie, currentHuman)) {
+                        System.out.println("-----------------------");
                         System.out.println(currentZombie.getType() + " killed " + currentHuman.getType());
+                        System.out.println("-----------------------");
                         HumanList.remove(currentHuman);
                     }
                 }
@@ -142,7 +147,10 @@ class ZombieWar {
     //returns true if zombie is alive, false if dead
     private boolean attackZombie(Human human, Zombie zombie) {
         //do attack
-        human.getWeapon().attack(zombie);
+        Weapon currentWeapon = human.getWeapon();
+        System.out.println("Zombie's health before attack: " + zombie.getHealth());
+        currentWeapon.attack(zombie);
+        System.out.println("Zombie's health after attack: " + zombie.getHealth());
         //get and test result of attack
         return zombie.getHealth() > 0;
     }
