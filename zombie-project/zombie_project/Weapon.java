@@ -21,11 +21,13 @@ public class Weapon {
             human.setHealth(human.getHealth() - this.damage);
         }
     }
+
+    //attack method
     public void attack(Zombie zombie) {
         Random getNum = new Random();
         int randNum = getNum.nextInt(11);
         //DEBUG
-        //System.out.println(randNum);
+        System.out.println(randNum);
         if (randNum % accuracy == 0) {
             System.out.println("The " + this.name + " missed!");
         } else {

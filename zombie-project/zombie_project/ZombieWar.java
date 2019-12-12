@@ -115,6 +115,25 @@ class ZombieWar {
         }
     }
 
+    //returns new randomly generated Weapon
+    /*
+    private Weapon generateWeapon() {
+        Random randNum = new Random();
+        int weaponType = randNum.nextInt(5);
+        switch (weaponType) {
+            case 0:
+                return new Shotgun();
+            case 1:
+                return new Pistol();
+            case 2:
+                return new BaseballBat();
+            case 3:
+                return new Rifle();
+            case 4:
+                return new Thundergun();
+        }
+    }*/
+
     //returns true if zombie is alive, false if dead
     private boolean attackZombie(Human human, Zombie zombie) {
         //do attack
